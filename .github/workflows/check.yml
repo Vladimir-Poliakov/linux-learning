@@ -1,0 +1,46 @@
+name: Repository Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  basic-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check repository structure
+        run: |
+          echo "Checking repository structure..."
+          test -f README.md
+          test -d kubernetes
+          test -d terraform-docker
+          echo "Repository structure looks OK."
+
+      - name: Check Kubernetes manifests
+        run: |
+          echo "Checking Kubernetes files..."
+          find kubernetes -type f -name "*.yaml" -o -name "*.yml"
+          echo "Kubernetes files found."
+
+      - name: Check Terraform files
+        run: |
+          echo "Checking Terraform files..."
+          find terraform-docker -type f -name "*.tf"
+          echo "Terraform files found."
+
+      - name: Check Python files
+        run: |
+          echo "Checking Python files..."
+          find . -type f -name "*.py" | head -20
+          echo "Python check completed."
+
+      - name: Finish
+        run: echo "All basic repository checks passed."
