@@ -134,13 +134,15 @@ The repository includes a small Linux network lab built with VirtualBox.
 
 server1 acts as a router and provides NAT and packet forwarding for the internal network.
 
-Technologies
+### Technologies
+
 Ubuntu Linux
 VirtualBox
 Netplan
 iptables
 TCP/IP
-Configuration
+
+### Configuration
 
 Enable IP forwarding:
 
@@ -155,11 +157,12 @@ Configure forwarding:
 iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
 
 iptables -A FORWARD -i enp0s3 -o enp0s8 -m state --state RELATED,ESTABLISHED -j ACCEPT
-Verification
-connectivity between internal clients
-Internet access through the router
-routing and forwarding behaviour
-Troubleshooting Approach
+
+### Verification
+
+- Connectivity between internal clients
+- Internet access through the router
+- Routing and forwarding behaviour
 
 The labs are also used to practice a structured troubleshooting workflow:
 
@@ -181,7 +184,7 @@ Verify service availability
    ↓
 Document the solution
 
-Typical Linux tools used during troubleshooting:
+### Typical Linux tools used during troubleshooting:
 
 systemctl
 journalctl
@@ -197,7 +200,8 @@ traceroute
 curl
 ssh
 tcpdump
-DevOps & Cloud Roadmap
+
+### DevOps & Cloud Roadmap
 
 The repository is continuously expanded with practical labs covering:
 
@@ -213,11 +217,11 @@ CI/CD
 
 The goal is to build practical skills for Junior Cloud Engineer, Cloud Operations and Junior DevOps roles.
 
-Learning Approach
+### Learning Approach
 
 The focus of this repository is hands-on practice.
 
-Typical workflow:
+### Typical workflow:
 
 Learn
   ↓
@@ -235,7 +239,7 @@ Document
 
 The labs are designed to practice not only configuration, but also troubleshooting and operational thinking.
 
-Disclaimer
+### Disclaimer
 
 This is a personal learning and laboratory repository.
 
