@@ -1,10 +1,8 @@
 # Linux & DevOps Learning Lab
 
-Hands-on Linux and DevOps practice focused on system administration,
-networking, troubleshooting, containerization, Kubernetes and Infrastructure as Code.
+Hands-on Linux and DevOps practice focused on system administration, networking, troubleshooting, containerization, Kubernetes and Infrastructure as Code.
 
-This repository contains practical labs and configuration examples built while
-developing Linux, DevOps and Cloud Engineering skills.
+This repository contains practical labs, scripts and configuration examples created while developing Linux, DevOps and Cloud Engineering skills.
 
 ## Skills Practiced
 
@@ -80,8 +78,7 @@ Containerization practice with Docker and Nginx.
 
 `systemd-practice/`
 
-Practice with Linux services and systemd, including custom service configuration
-and automatic service startup.
+Practice with Linux services and systemd, including custom service configuration and automatic service startup.
 
 ### Permissions
 
@@ -131,32 +128,39 @@ The repository includes a small Linux network lab built with VirtualBox.
           Router / NAT
              /      \
         client1    client2
+```
 
-server1 acts as a router and provides NAT and packet forwarding for the internal network.
+`server1` acts as a router and provides NAT and packet forwarding for the internal network.
 
 ### Technologies
 
-Ubuntu Linux
-VirtualBox
-Netplan
-iptables
-TCP/IP
+- Ubuntu Linux
+- VirtualBox
+- Netplan
+- iptables
+- TCP/IP
 
 ### Configuration
 
 Enable IP forwarding:
 
+```bash
 echo 1 > /proc/sys/net/ipv4/ip_forward
+```
 
 Configure NAT:
 
+```bash
 iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+```
 
 Configure forwarding:
 
+```bash
 iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
 
 iptables -A FORWARD -i enp0s3 -o enp0s8 -m state --state RELATED,ESTABLISHED -j ACCEPT
+```
 
 ### Verification
 
@@ -164,8 +168,15 @@ iptables -A FORWARD -i enp0s3 -o enp0s8 -m state --state RELATED,ESTABLISHED -j 
 - Internet access through the router
 - Routing and forwarding behaviour
 
-The labs are also used to practice a structured troubleshooting workflow:
+---
 
+## Troubleshooting Approach
+
+The labs are also used to practice a structured troubleshooting workflow.
+
+### Workflow
+
+```text
 Problem
    ↓
 Check symptoms
@@ -183,9 +194,11 @@ Apply fix
 Verify service availability
    ↓
 Document the solution
+```
 
-### Typical Linux tools used during troubleshooting:
+### Typical Linux Troubleshooting Tools
 
+```text
 systemctl
 journalctl
 ps
@@ -200,29 +213,35 @@ traceroute
 curl
 ssh
 tcpdump
+```
 
-### DevOps & Cloud Roadmap
+---
+
+## DevOps & Cloud Roadmap
 
 The repository is continuously expanded with practical labs covering:
 
-Linux administration
-Networking
-Containers
-Kubernetes
-Infrastructure as Code
-Cloud fundamentals
-Monitoring
-Automation
-CI/CD
+- Linux administration
+- Networking
+- Containers
+- Kubernetes
+- Infrastructure as Code
+- Cloud fundamentals
+- Monitoring
+- Automation
+- CI/CD
 
 The goal is to build practical skills for Junior Cloud Engineer, Cloud Operations and Junior DevOps roles.
 
-### Learning Approach
+---
+
+## Learning Approach
 
 The focus of this repository is hands-on practice.
 
-### Typical workflow:
+### Typical Workflow
 
+```text
 Learn
   ↓
 Build
@@ -236,10 +255,13 @@ Troubleshoot
 Fix
   ↓
 Document
+```
 
 The labs are designed to practice not only configuration, but also troubleshooting and operational thinking.
 
-### Disclaimer
+---
+
+## Disclaimer
 
 This is a personal learning and laboratory repository.
 
