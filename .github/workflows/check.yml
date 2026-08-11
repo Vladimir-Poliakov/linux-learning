@@ -38,14 +38,6 @@ jobs:
           test -d kubernetes
           test -d terraform-docker
           echo "Repository structure looks OK."
-          
-      - name: Check repository structure
-        run: |
-          echo "Checking repository structure..."
-          test -f README.md
-          test -d kubernetes
-          test -d terraform-docker
-          echo "Repository structure looks OK."
 
       - name: Check Kubernetes manifests
         run: |
