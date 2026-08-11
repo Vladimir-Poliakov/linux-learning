@@ -131,3 +131,112 @@ The repository includes a small Linux network lab built with VirtualBox.
           Router / NAT
              /      \
         client1    client2
+
+server1 acts as a router and provides NAT and packet forwarding for the internal network.
+
+Technologies
+Ubuntu Linux
+VirtualBox
+Netplan
+iptables
+TCP/IP
+Configuration
+
+Enable IP forwarding:
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+Configure NAT:
+
+iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+
+Configure forwarding:
+
+iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
+
+iptables -A FORWARD -i enp0s3 -o enp0s8 -m state --state RELATED,ESTABLISHED -j ACCEPT
+Verification
+connectivity between internal clients
+Internet access through the router
+routing and forwarding behaviour
+Troubleshooting Approach
+
+The labs are also used to practice a structured troubleshooting workflow:
+
+Problem
+   ↓
+Check symptoms
+   ↓
+Check system status
+   ↓
+Inspect logs
+   ↓
+Check networking
+   ↓
+Identify root cause
+   ↓
+Apply fix
+   ↓
+Verify service availability
+   ↓
+Document the solution
+
+Typical Linux tools used during troubleshooting:
+
+systemctl
+journalctl
+ps
+top
+htop
+df
+du
+ip
+ss
+ping
+traceroute
+curl
+ssh
+tcpdump
+DevOps & Cloud Roadmap
+
+The repository is continuously expanded with practical labs covering:
+
+Linux administration
+Networking
+Containers
+Kubernetes
+Infrastructure as Code
+Cloud fundamentals
+Monitoring
+Automation
+CI/CD
+
+The goal is to build practical skills for Junior Cloud Engineer, Cloud Operations and Junior DevOps roles.
+
+Learning Approach
+
+The focus of this repository is hands-on practice.
+
+Typical workflow:
+
+Learn
+  ↓
+Build
+  ↓
+Test
+  ↓
+Break
+  ↓
+Troubleshoot
+  ↓
+Fix
+  ↓
+Document
+
+The labs are designed to practice not only configuration, but also troubleshooting and operational thinking.
+
+Disclaimer
+
+This is a personal learning and laboratory repository.
+
+The projects are intended to demonstrate hands-on learning, experimentation and practical understanding rather than production experience.
