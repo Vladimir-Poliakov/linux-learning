@@ -1,268 +1,228 @@
-# Linux & DevOps Learning Lab
+# Linux & DevOps Practice
 
-Hands-on Linux and DevOps practice focused on system administration, networking, troubleshooting, containerization, Kubernetes and Infrastructure as Code.
+Hands-on learning repository focused on Linux administration, Cloud and DevOps engineering, automation, containers, networking and infrastructure.
 
-This repository contains practical labs, scripts and configuration examples created while developing Linux, DevOps and Cloud Engineering skills.
+I use this repository to document practical labs and small projects while developing skills for Junior Cloud Engineer / Junior DevOps / Cloud Operations roles.
 
-## Skills Practiced
+## Core Skills
 
-- Linux system administration
+- Linux administration
 - Bash scripting
 - Python automation
-- Networking and troubleshooting
-- TCP/IP, routing and NAT
-- iptables and firewall rules
-- SSH and remote access
-- systemd and service management
-- Log analysis with journalctl
-- Docker and Nginx
-- Kubernetes fundamentals
-- Terraform with Docker
 - Git and GitHub
-- Virtualization with VirtualBox
+- Docker
+- Docker Compose
+- Kubernetes
+- Terraform
+- CI/CD
+- GitHub Actions
+- REST APIs
+- Unit testing and mocking
+- Networking fundamentals
+- NGINX
+- systemd
+- Infrastructure automation
+- Troubleshooting
+
+## Featured Projects
+
+### Python API Testing
+
+A Python project demonstrating REST API integration with the GitHub API.
+
+Technologies:
+
+- Python
+- Requests
+- REST API
+- JSON
+- unittest
+- unittest.mock
+- Environment variables
+- Bearer token authentication
+- GitHub Actions
+
+Project:
+
+`python-api-testing/`
+
+The project retrieves GitHub Pull Requests, transforms API responses into a simplified Python structure and uses mocked HTTP requests for unit testing.
 
 ---
 
-## Repository Structure
+### Flask Docker Application
 
-### Networking
+A containerized Flask application integrated with the GitHub Pull Requests API.
 
-`networking-practice.md`
+Technologies:
 
-Practical Linux networking exercises covering:
+- Python
+- Flask
+- Requests
+- Docker
+- Docker Compose
+- Bash
+- REST API
+- Environment variables
 
-- static IP configuration
-- routing
-- IP forwarding
-- NAT
-- iptables
-- connectivity testing
-- network troubleshooting
+Project:
 
-### Kubernetes
+`flask-docker-app/`
+
+The project demonstrates containerization of a Python application, dependency management, Docker image creation and running the application with Docker Compose.
+
+---
+
+### Python Archive Cleaner
+
+A Python automation tool for processing and cleaning ZIP archives.
+
+Technologies:
+
+- Python
+- Linux
+- ZIP
+- tempfile
+- os.walk
+- shutil
+- logging
+- CLI arguments
+
+Project:
+
+`python-archive-cleaner/`
+
+The script extracts an archive into a temporary directory, analyzes the directory structure, removes unnecessary directories, creates a cleanup report and produces a new archive.
+
+---
+
+### Bash File Transfer Tool
+
+A command-line Bash utility for uploading and downloading files.
+
+Technologies:
+
+- Bash
+- Linux
+- curl
+- CLI
+- Shell scripting
+- Error handling
+
+Project:
+
+`transfer-tool/`
+
+The tool supports file upload, file download, multiple uploads, help and version commands.
+
+---
+
+### Kubernetes Practice
+
+Practical Kubernetes configuration and deployment exercises.
+
+Technologies:
+
+- Kubernetes
+- kubectl
+- Deployments
+- Services
+- NGINX
+- Containerization
+
+Project:
 
 `kubernetes/`
 
-Kubernetes deployment practice using an Nginx container.
-
-The current manifest demonstrates:
-
-- Kubernetes Deployment
-- replica configuration
-- pod labels and selectors
-- container configuration
-- container ports
-- Nginx image deployment
+---
 
 ### Terraform + Docker
 
+Infrastructure as Code practice using Terraform and Docker.
+
+Technologies:
+
+- Terraform
+- Docker
+- Infrastructure as Code
+- NGINX
+
+Project:
+
 `terraform-docker/`
 
-Infrastructure as Code practice using Terraform and the Docker provider.
+---
 
-The configuration demonstrates:
+### Docker & NGINX Practice
 
-- Terraform provider configuration
-- Docker image management
-- Docker container creation
-- port mapping
-- declarative infrastructure configuration
+Hands-on containerization and web server configuration.
 
-### Docker + Nginx
+Technologies:
+
+- Docker
+- NGINX
+- Linux
+- Networking
+
+Project:
 
 `docker-nginx-practice/`
 
-Containerization practice with Docker and Nginx.
+---
 
-### systemd
+### systemd Practice
+
+Linux service management and system administration exercises.
+
+Technologies:
+
+- Linux
+- systemd
+- services
+- processes
+- logging
+
+Project:
 
 `systemd-practice/`
 
-Practice with Linux services and systemd, including custom service configuration and automatic service startup.
+## CI/CD
 
-### Permissions
+The repository also contains GitHub Actions workflows used to automate checks and testing.
 
-`permissions-practice/`
+The CI practice includes:
 
-Linux users, groups, permissions and filesystem access control.
+- automated workflow execution
+- Python setup
+- test execution
+- repository checks
+- automated validation after Git pushes
 
-### SSH
+## Learning Focus
 
-`ssh-practice.md`
+My current focus is building practical experience in:
 
-Practice with SSH configuration and remote Linux access.
+1. Linux administration
+2. Networking
+3. Docker and containerization
+4. Python and Bash automation
+5. Kubernetes
+6. Terraform / Infrastructure as Code
+7. CI/CD
+8. Cloud fundamentals
+9. Troubleshooting and operational support
 
-### Linux Logs & Troubleshooting
+## Career Goal
 
-`journalctl-nginx.md`
+I am building practical skills for a career in:
 
-Practice with system logs and service troubleshooting using journalctl.
+- Junior Cloud Engineering
+- Cloud Operations
+- Junior DevOps Engineering
+- Infrastructure / Operations Engineering
 
-### Bash & Automation
+## Repository Philosophy
 
-Examples of Bash scripts for:
+This repository is focused on hands-on practice.
 
-- file operations
-- backups
-- system tasks
-- automation
-- command execution
-- error handling
-
-### Python
-
-Python scripts for practical automation and system-related tasks.
-
----
-
-## Linux Network Lab
-
-The repository includes a small Linux network lab built with VirtualBox.
-
-### Architecture
-
-```text
-              Internet
-                  |
-              server1
-          Router / NAT
-             /      \
-        client1    client2
-```
-
-`server1` acts as a router and provides NAT and packet forwarding for the internal network.
-
-### Technologies
-
-- Ubuntu Linux
-- VirtualBox
-- Netplan
-- iptables
-- TCP/IP
-
-### Configuration
-
-Enable IP forwarding:
-
-```bash
-echo 1 > /proc/sys/net/ipv4/ip_forward
-```
-
-Configure NAT:
-
-```bash
-iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
-```
-
-Configure forwarding:
-
-```bash
-iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
-
-iptables -A FORWARD -i enp0s3 -o enp0s8 -m state --state RELATED,ESTABLISHED -j ACCEPT
-```
-
-### Verification
-
-- Connectivity between internal clients
-- Internet access through the router
-- Routing and forwarding behaviour
-
----
-
-## Troubleshooting Approach
-
-The labs are also used to practice a structured troubleshooting workflow.
-
-### Workflow
-
-```text
-Problem
-   ↓
-Check symptoms
-   ↓
-Check system status
-   ↓
-Inspect logs
-   ↓
-Check networking
-   ↓
-Identify root cause
-   ↓
-Apply fix
-   ↓
-Verify service availability
-   ↓
-Document the solution
-```
-
-### Typical Linux Troubleshooting Tools
-
-```text
-systemctl
-journalctl
-ps
-top
-htop
-df
-du
-ip
-ss
-ping
-traceroute
-curl
-ssh
-tcpdump
-```
-
----
-
-## DevOps & Cloud Roadmap
-
-The repository is continuously expanded with practical labs covering:
-
-- Linux administration
-- Networking
-- Containers
-- Kubernetes
-- Infrastructure as Code
-- Cloud fundamentals
-- Monitoring
-- Automation
-- CI/CD
-
-The goal is to build practical skills for Junior Cloud Engineer, Cloud Operations and Junior DevOps roles.
-
----
-
-## Learning Approach
-
-The focus of this repository is hands-on practice.
-
-### Typical Workflow
-
-```text
-Learn
-  ↓
-Build
-  ↓
-Test
-  ↓
-Break
-  ↓
-Troubleshoot
-  ↓
-Fix
-  ↓
-Document
-```
-
-The labs are designed to practice not only configuration, but also troubleshooting and operational thinking.
-
----
-
-## Disclaimer
-
-This is a personal learning and laboratory repository.
-
-The projects are intended to demonstrate hands-on learning, experimentation and practical understanding rather than production experience.
+Each project is based on practical tasks and is documented with its technologies, structure and DevOps relevance.
