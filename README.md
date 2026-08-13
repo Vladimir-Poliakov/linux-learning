@@ -463,41 +463,20 @@ Terraform configuration
 - Web-server deployment
 - Container troubleshooting
 
-[Open Docker + NGINX project](./docker-nginx-practice)
-
 ---
 
 ## 9. ⚙️ systemd Practice
 
 **Linux service management and troubleshooting using systemd.**
 
-### Technologies
+### Topics:
 
-- Linux
 - systemd
 - systemctl
+- service management
+- service startup
 - journalctl
-- Bash
-
-### What I practiced
-
-- Service configuration
-- Service lifecycle
-- Starting and stopping services
-- Enabling services
-- Checking service status
-- Reading service logs
-- Troubleshooting Linux services
-
-### Useful commands
-
-```bash
-systemctl status <service>
-systemctl start <service>
-systemctl stop <service>
-systemctl restart <service>
-systemctl enable <service>
-journalctl -u <service>
+- Linux troubleshooting
 ```
 
 [Open systemd practice](./systemd-practice)
