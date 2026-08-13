@@ -1,744 +1,847 @@
-Linux & DevOps Practice
+# Linux & DevOps Practice
 
-A practical DevOps learning portfolio covering Linux administration, Bash scripting, Python automation, Docker, Kubernetes, Terraform, networking, CI/CD, REST APIs and automated testing.
+> Hands-on Cloud & DevOps learning portfolio focused on Linux administration, automation, containerization, Infrastructure as Code and CI/CD.
 
-This repository contains hands-on labs and projects completed during my Cloud & DevOps training and independent practice.
+This repository contains practical labs and projects completed during my Cloud & DevOps training and independent practice.
 
-Technologies
+The projects cover Linux, Bash, Python, REST APIs, automated testing, Docker, Docker Compose, NGINX, Kubernetes, Terraform, networking and GitHub Actions.
 
-Linux / Ubuntu
+---
 
-Bash
+## Technologies
 
-Python
+| Category | Technologies |
+|---|---|
+| Operating Systems | Linux, Ubuntu |
+| Scripting | Bash, Python |
+| Version Control | Git, GitHub |
+| Containers | Docker, Docker Compose |
+| Orchestration | Kubernetes |
+| Infrastructure as Code | Terraform, HCL |
+| Web Servers | NGINX, Apache |
+| Networking | TCP/IP, Routing, NAT, iptables |
+| Remote Access | SSH, SCP |
+| Linux Services | systemd, systemctl, journalctl |
+| APIs | REST API, HTTP, JSON |
+| Testing | unittest, unittest.mock |
+| CI/CD | GitHub Actions |
+| Virtualization | VirtualBox |
 
-Git / GitHub
+---
 
-Docker
+## Repository Structure
 
-Docker Compose
-
-Kubernetes
-
-Terraform
-
-NGINX
-
-systemd
-
-REST API
-
-HTTP / JSON
-
-unittest
-
-unittest.mock
-
-GitHub Actions
-
-CI/CD
-
-TCP/IP
-
-SSH
-
-iptables
-
-VirtualBox
-
-Repository Structure
-
+```text
 linux-learning/
+│
 ├── .github/
 │   └── workflows/
+│
 ├── config/
 ├── docker-nginx-practice/
 ├── flask-docker-app/
-│   └── handlers/
-│       └── pull_requests.py
 ├── kubernetes/
 ├── permissions-practice/
 ├── python-api-testing/
-│   ├── handlers/
-│   │   └── pull_requests.py
-│   ├── tests/
-│   │   └── test_pull_requests.py
-│   ├── requirements.txt
-│   └── README.md
+├── python-archive-cleaner/
 ├── server/
 ├── src/
 ├── systemd-practice/
 ├── terraform-docker/
 ├── test_restore/
+├── transfer-tool/
+│
 ├── app.py
 ├── backup.sh
 ├── networking-practice.md
 ├── software-management.md
 ├── ssh-practice.md
 └── README.md
+```
 
-Projects
+---
 
-1. Python API Testing
+# Projects & Labs
 
-Hands-on Python project focused on REST API integration and automated testing.
+## 1. Python API Testing
 
-The project uses the GitHub Pull Requests API and demonstrates how to work with external APIs without making real requests during unit tests.
+**REST API integration and automated unit testing with Python.**
 
-Technologies
+The project uses the GitHub Pull Requests API and demonstrates how to work with external APIs while keeping unit tests independent from real HTTP requests.
 
-Python
+### Technologies
 
-Requests
+- Python
+- Requests
+- REST API
+- JSON
+- unittest
+- unittest.mock
+- GitHub API
+- GitHub Actions
 
-REST API
+### What I practiced
 
-JSON
+- HTTP GET requests
+- API response processing
+- Request parameters
+- Pagination
+- Environment variables
+- Bearer token authentication
+- HTTP headers
+- Mocking external requests
+- Unit testing
 
-unittest
+### Testing
 
-unittest.mock
+External HTTP requests are mocked with:
 
-GitHub API
+```python
+unittest.mock.patch
+```
 
-Git
+The tests verify:
 
-GitHub Actions
+- successful API response processing
+- empty API responses
+- correct API endpoint
+- correct request parameters
+- HTTP headers
+- Bearer token authentication
 
-Key Topics
+### Project structure
 
-HTTP GET requests
+```text
+python-api-testing/
+├── handlers/
+│   └── pull_requests.py
+├── tests/
+│   └── test_pull_requests.py
+├── requirements.txt
+└── README.md
+```
 
-API response processing
+[Open Python API Testing project](./python-api-testing)
 
-Request parameters
+---
 
-Pagination
+## 2. Flask Docker Application
 
-Bearer token authentication
+**Containerized Flask application integrated with the GitHub Pull Requests API.**
 
-Environment variables
+The project demonstrates how a Python web application can be packaged into a Docker image and executed as a container.
 
-Mocking external HTTP requests
+### Technologies
 
-Unit testing
+- Python
+- Flask
+- Docker
+- Docker Compose
+- REST API
+- Git
 
-The project contains tests for:
+### What I practiced
 
-API response processing
+- Flask application structure
+- Dockerfile creation
+- Docker image building
+- Python dependency installation
+- Container execution
+- Docker Compose
+- Port mapping
+- API integration
 
-Empty API responses
+### Application flow
 
-Correct API endpoint
+```text
+Flask Application
+        │
+        ▼
+GitHub API Handler
+        │
+        ▼
+GitHub Pull Requests API
+        │
+        ▼
+JSON Response
+```
 
-Request parameters
+### Project structure
 
-HTTP headers
+```text
+flask-docker-app/
+├── handlers/
+│   └── pull_requests.py
+├── Dockerfile
+├── build.sh
+├── docker-compose.yml
+├── requirements.txt
+└── start.py
+```
 
-Bearer token authentication
+[Open Flask Docker project](./flask-docker-app)
 
-The tests use unittest.mock.patch so that they do not require a real request to GitHub.
+---
 
-2. Flask Docker Application
+## 3. Python Archive Cleaner
 
-A Flask application packaged and executed as a Docker container.
+**Python automation tool for cleaning ZIP archives.**
 
-The project demonstrates how a Python web application can be containerized and run using Docker and Docker Compose.
+The script processes a ZIP archive, identifies directories that do not contain `__init__.py`, removes them and creates a new cleaned archive.
 
-Technologies
+### Technologies
 
-Python
+- Python
+- os
+- os.walk
+- tempfile
+- zipfile
+- shutil
+- logging
 
-Flask
+### What I practiced
 
-Docker
+- Command-line arguments
+- Temporary directories
+- ZIP archive processing
+- File-system traversal
+- Directory management
+- Logging
+- File creation
+- Archive creation
 
-Docker Compose
+### Processing flow
 
-Git
+```text
+ZIP archive
+     │
+     ▼
+Temporary directory
+     │
+     ▼
+Extract archive
+     │
+     ▼
+Analyze directories
+     │
+     ▼
+Find directories without __init__.py
+     │
+     ▼
+Remove directories
+     │
+     ▼
+Create cleaned.txt
+     │
+     ▼
+Create new ZIP archive
+```
 
-REST API
+### Main Python modules
 
-Key Topics
-
-Flask application structure
-
-Dockerfile
-
-Docker image creation
-
-Python dependencies
-
-Containerized application execution
-
-Docker Compose
-
-Application configuration
-
-API integration
-
-The application includes a route for retrieving GitHub pull requests through the Python API handler.
-
-3. Python Archive Cleaner
-
-A Python automation script for processing ZIP archives and removing directories that do not contain __init__.py.
-
-Technologies
-
-Python
-
-ZIP archives
-
-File system operations
-
-Temporary directories
-
-Logging
-
-Key Topics
-
+```python
 os
-
-os.walk
-
+sys
 tempfile
-
 zipfile
-
 shutil
-
-command-line arguments
-
 logging
+```
 
-file and directory management
+[Open Python Archive Cleaner](./python-archive-cleaner)
 
-The script:
+---
 
-Receives a ZIP archive as a command-line argument.
+## 4. Bash Transfer Tool
 
-Creates a temporary directory.
+**Command-line Bash utility for uploading and downloading files.**
 
-Extracts the archive.
+The tool uses `curl` and `free.keep.sh` to transfer files from the command line.
 
-Analyses the directory structure.
+### Technologies
 
-Finds directories without __init__.py.
+- Bash
+- curl
+- Shell scripting
+- Command-line tools
 
-Removes the selected directories.
+### Upload a file
 
-Creates cleaned.txt with the removed directory paths.
-
-Creates a new cleaned archive.
-
-This project demonstrates practical Python automation for file-system operations.
-
-4. Bash Transfer Tool
-
-A Bash command-line tool for uploading and downloading files using free.keep.sh.
-
-Technologies
-
-Bash
-
-curl
-
-command-line arguments
-
-shell scripting
-
-Supported Operations
-
-Upload a file:
-
+```bash
 ./transfer.sh file.txt
+```
 
-Upload multiple files:
+### Upload multiple files
 
+```bash
 ./transfer.sh file1.txt file2.txt
+```
 
-Download a file:
+### Download a file
 
+```bash
 ./transfer.sh -d ./downloads FILE_ID file.txt
+```
 
-Display help:
+### Show help
 
+```bash
 ./transfer.sh -h
+```
 
-Display the tool version:
+### Show version
 
+```bash
 ./transfer.sh -v
+```
 
-Key Topics
+### What I practiced
 
-Bash functions
+- Bash functions
+- Variables
+- Command-line arguments
+- Flags
+- `case`
+- `readonly`
+- `curl`
+- File validation
+- Error handling
 
-command-line argument processing
+[Open Bash Transfer Tool](./transfer-tool)
 
-flags
+---
 
-case
+## 5. Linux Network Router Lab
 
-variables
+**Practical Linux networking exercises using virtual machines.**
 
-readonly
+### Technologies
 
-curl
+- Linux
+- VirtualBox
+- TCP/IP
+- Routing
+- NAT
+- IP forwarding
+- iptables
 
-error handling
+### What I practiced
 
-file validation
+- Network interfaces
+- IP addresses
+- Routing tables
+- Packet forwarding
+- NAT
+- Linux firewall configuration
+- Virtual machine networking
+- Network troubleshooting
 
-command-line tools
+### Network concept
 
-The project demonstrates practical Bash scripting and command-line tool development.
+```text
+Client VM
+    │
+    ▼
+Linux Router
+    │
+    ├── IP forwarding
+    ├── Routing
+    ├── NAT
+    └── iptables
+    │
+    ▼
+External Network
+```
 
-5. Linux Network Router Lab
+[Open networking practice](./networking-practice.md)
 
-Practical Linux networking exercises using virtual machines.
+---
 
-Technologies
+## 6. Kubernetes Practice
 
-Linux
+**Hands-on Kubernetes deployment practice for a web application.**
 
-VirtualBox
+### Technologies
 
-TCP/IP
+- Kubernetes
+- YAML
+- Pods
+- Deployments
+- Services
+- NGINX
 
-Routing
+### What I practiced
 
-NAT
+- Kubernetes Deployments
+- Kubernetes Services
+- YAML configuration
+- Containerized applications
+- Application exposure
+- Basic Kubernetes operations
 
-IP forwarding
+### Deployment concept
 
-iptables
-
-Key Topics
-
-Network interfaces
-
-IP addresses
-
-Routing
-
-NAT
-
-Packet forwarding
-
-Linux firewall configuration
-
-Virtual machine networking
-
-The lab demonstrates practical configuration and troubleshooting of Linux networking between virtual machines.
-
-6. Kubernetes Practice
-
-Hands-on Kubernetes deployment practice for a web application.
-
-Technologies
-
+```text
 Kubernetes
-
-YAML
-
-Pods
-
-Deployments
-
-Services
-
+    │
+    ▼
+Deployment
+    │
+    ▼
+Pod
+    │
+    ▼
+Container
+    │
+    ▼
 NGINX
+    │
+    ▼
+Service
+```
 
-Key Topics
+[Open Kubernetes project](./kubernetes)
 
-Kubernetes Deployment
+---
 
-Kubernetes Service
+## 7. Terraform + Docker
 
-Containerized applications
+**Infrastructure as Code practice using Terraform and Docker.**
 
-Application exposure
+### Technologies
 
-YAML configuration
+- Terraform
+- Docker
+- HCL
+- Infrastructure as Code
 
-Basic Kubernetes operations
+### What I practiced
 
-The project demonstrates how a containerized web application can be deployed and exposed using Kubernetes resources.
+- Terraform configuration
+- Docker resources
+- Declarative infrastructure
+- Infrastructure provisioning
+- Terraform workflow
+- Infrastructure as Code concepts
 
-7. Terraform + Docker
+### Infrastructure flow
 
-Infrastructure as Code practice using Terraform and Docker.
-
-Technologies
-
-Terraform
-
-Docker
-
-HCL
-
-Infrastructure as Code
-
-Key Topics
-
+```text
 Terraform configuration
+          │
+          ▼
+      Terraform
+          │
+          ▼
+     Docker provider
+          │
+          ▼
+   Docker resources
+```
 
-Docker resources
+[Open Terraform + Docker project](./terraform-docker)
 
-Infrastructure provisioning
+---
 
-Declarative configuration
+## 8. Docker + NGINX Practice
 
-Infrastructure as Code workflow
+**Practical containerization and web-server deployment using Docker and NGINX.**
 
-The project demonstrates how infrastructure can be described and managed using Terraform instead of manually creating Docker resources.
+### Technologies
 
-8. Docker + NGINX Practice
+- Docker
+- NGINX
+- Linux
+- Docker Compose
 
-Practical containerization and web server exercises using Docker and NGINX.
+### What I practiced
 
-Technologies
+- Docker containers
+- NGINX configuration
+- Port mapping
+- Container configuration
+- Web-server deployment
+- Container troubleshooting
 
-Docker
+[Open Docker + NGINX project](./docker-nginx-practice)
 
-NGINX
+---
 
-Linux
+## 9. ⚙️ systemd Practice
 
-Docker Compose
+**Linux service management and troubleshooting using systemd.**
 
-Key Topics
+### Technologies
 
-Docker containers
+- Linux
+- systemd
+- systemctl
+- journalctl
+- Bash
 
-NGINX
+### What I practiced
 
-Port mapping
+- Service configuration
+- Service lifecycle
+- Starting and stopping services
+- Enabling services
+- Checking service status
+- Reading service logs
+- Troubleshooting Linux services
 
-Container configuration
+### Useful commands
 
-Web server deployment
+```bash
+systemctl status <service>
+systemctl start <service>
+systemctl stop <service>
+systemctl restart <service>
+systemctl enable <service>
+journalctl -u <service>
+```
 
-Container troubleshooting
+[Open systemd practice](./systemd-practice)
 
-9. systemd Practice
+---
 
-Linux service management and troubleshooting practice using systemd.
+## 10. Linux Permissions Practice
 
-Technologies
+**Hands-on Linux exercises with users, groups, ownership and permissions.**
 
-Linux
+### Technologies
 
-systemd
+- Linux
+- Bash
+- File permissions
 
-journalctl
+### What I practiced
 
-Bash
+- Users
+- Groups
+- File ownership
+- `chmod`
+- `chown`
+- `umask`
+- Access control
 
-Key Topics
+### Main commands
 
-systemd services
-
-Service lifecycle
-
-Service configuration
-
-systemctl
-
-journalctl
-
-Service troubleshooting
-
-Linux process management
-
-10. Linux Permissions Practice
-
-Hands-on Linux exercises focused on users, groups, permissions and file access.
-
-Technologies
-
-Linux
-
-Bash
-
-File permissions
-
-Key Topics
-
-Users
-
-Groups
-
-Ownership
-
+```bash
 chmod
-
 chown
-
 umask
+```
 
-File access control
+[Open permissions practice](./permissions-practice)
 
-11. Linux Software Management
+---
 
-Practical Linux package and software management exercises.
+## 11. Linux Software Management
 
-Technologies
+**Practical Linux package and software-management exercises.**
 
+### Technologies
+
+- Linux
+- Ubuntu
+- APT
+- NGINX
+- Apache
+
+### What I practiced
+
+- Package installation
+- Package removal
+- Package updates
+- Package management
+- Web-server installation
+- Service troubleshooting
+
+[Open software management practice](./software-management.md)
+
+---
+
+## 12. SSH Practice
+
+**Practical SSH administration and secure remote-access exercises.**
+
+### Technologies
+
+- Linux
+- SSH
+- SCP
+- Bash
+
+### What I practiced
+
+- SSH connections
+- SSH keys
+- SSH configuration
+- Secure remote access
+- File transfer with SCP
+
+### SSH example
+
+```bash
+ssh user@host
+```
+
+### SCP example
+
+```bash
+scp file.txt user@host:/path/
+```
+
+[Open SSH practice](./ssh-practice.md)
+
+---
+
+## 13. Backup Automation
+
+**Bash scripting practice for automated backup operations.**
+
+### Technologies
+
+- Bash
+- Linux
+- Shell scripting
+
+### What I practiced
+
+- Backup automation
+- Command-line arguments
+- File operations
+- Hostname detection
+- Error handling
+- Shell scripting
+
+[Open backup script](./backup.sh)
+
+---
+
+# CI/CD & GitHub Actions
+
+The repository contains GitHub Actions workflows used to automate repository checks and Python testing.
+
+### CI/CD workflow
+
+```text
+Git push
+   │
+   ▼
+GitHub Actions
+   │
+   ▼
+Checkout repository
+   │
+   ▼
+Setup Python
+   │
+   ▼
+Install dependencies
+   │
+   ▼
+Run automated tests
+   │
+   ▼
+Report result
+```
+
+### What I practiced
+
+- GitHub Actions workflows
+- YAML configuration
+- Automated execution on push
+- Python environment setup
+- Dependency installation
+- Automated testing
+- Repository validation
+- CI concepts
+
+---
+
+# DevOps Skills Demonstrated
+
+## Linux
+
+- Linux command line
+- File-system management
+- Users and groups
+- Permissions
+- SSH
+- Networking
+- Processes
+- systemd
+- Logs
+- Package management
+
+## Bash
+
+- Shell scripting
+- Automation
+- Command-line tools
+- Argument parsing
+- Flags
+- Error handling
+- File operations
+
+## Python
+
+- Scripting
+- Automation
+- REST API integration
+- JSON processing
+- File-system automation
+- Unit testing
+- Mocking
+
+## Docker
+
+- Dockerfiles
+- Images
+- Containers
+- Port mapping
+- Docker Compose
+- Application containerization
+
+## Kubernetes
+
+- Pods
+- Deployments
+- Services
+- YAML configuration
+- Container orchestration basics
+
+## Terraform
+
+- Infrastructure as Code
+- Declarative configuration
+- Docker resource management
+- Infrastructure provisioning
+
+## Networking
+
+- TCP/IP
+- IP addressing
+- Routing
+- NAT
+- IP forwarding
+- iptables
+- Virtual machine networking
+
+## CI/CD
+
+- GitHub Actions
+- Automated testing
+- Workflow configuration
+- Repository checks
+
+---
+
+# Learning Path
+
+The repository follows a practical progression from Linux fundamentals to DevOps automation and infrastructure.
+
+```text
 Linux
-
-Ubuntu
-
-APT
-
-NGINX
-
-Apache
-
-Key Topics
-
-Package installation
-
-Package removal
-
-Package updates
-
-Service troubleshooting
-
-Web server installation and configuration
-
-12. SSH Practice
-
-Practical SSH administration exercises.
-
-Technologies
-
-Linux
-
-SSH
-
-SCP
-
+  │
+  ▼
 Bash
-
-Key Topics
-
-SSH connections
-
-SSH keys
-
-SSH configuration
-
-Secure remote access
-
-File transfer with SCP
-
-13. Backup Automation
-
-Bash scripting practice for automated backup operations.
-
-Technologies
-
-Bash
-
-Linux
-
-Shell scripting
-
-Key Topics
-
-Backup automation
-
-Command-line arguments
-
-File operations
-
-Hostname detection
-
-Error handling
-
-CI/CD and GitHub Actions
-
-The repository also contains GitHub Actions workflows used to automate repository checks and Python testing.
-
-The workflows demonstrate:
-
-Workflow configuration
-
-Automated execution on push
-
-Python environment setup
-
-Dependency installation
-
-Automated testing
-
-Repository checks
-
-The goal is to connect development work with automated validation through CI.
-
-DevOps Skills Demonstrated
-
-Linux
-
-Linux command line
-
-File system management
-
-Permissions
-
-Users and groups
-
-SSH
-
-Networking
-
-Processes
-
-systemd
-
-Logs
-
-Package management
-
-Bash
-
-Shell scripting
-
-Automation
-
-Command-line tools
-
-Argument parsing
-
-Error handling
-
-File operations
-
+  │
+  ▼
+Git / GitHub
+  │
+  ▼
 Python
-
-Scripting
-
-Automation
-
-REST API integration
-
-JSON processing
-
-File-system automation
-
-Unit testing
-
-Mocking
-
+  │
+  ▼
+REST APIs
+  │
+  ▼
+Unit Testing
+  │
+  ▼
 Docker
+  │
+  ▼
+Docker Compose
+  │
+  ▼
+NGINX
+  │
+  ▼
+Kubernetes
+  │
+  ▼
+Terraform
+  │
+  ▼
+CI/CD
+  │
+  ▼
+Cloud / DevOps
+```
 
-Dockerfiles
+---
 
-Images
+# Goal
 
+The goal of this repository is to demonstrate practical skills required for a **Junior DevOps / Cloud Engineer** role.
+
+The main focus areas are:
+
+- Linux administration
+- Bash automation
+- Python automation
+- REST APIs
+- Automated testing
+- Docker
+- Docker Compose
+- Kubernetes
+- Terraform
+- Infrastructure as Code
+- Networking
+- CI/CD
+- GitHub Actions
+
+The projects are based on hands-on tasks rather than only theoretical study.
+
+---
+
+# Training & Practice
+
+This repository is part of my practical Cloud & DevOps learning journey.
+
+The labs are designed to build practical experience with:
+
+```text
+Operating Systems
+       │
+       ▼
+Automation
+       │
+       ▼
+Programming
+       │
+       ▼
 Containers
-
-Port mapping
-
-Docker Compose
-
-Application containerization
-
-Kubernetes
-
-Deployments
-
-Services
-
-YAML configuration
-
-Container orchestration basics
-
-Terraform
-
-Infrastructure as Code
-
-Declarative configuration
-
-Docker resource management
-
+       │
+       ▼
+Infrastructure
+       │
+       ▼
+Orchestration
+       │
+       ▼
 CI/CD
+```
 
-GitHub Actions
+---
 
-Automated testing
+# Author
 
-Workflow configuration
-
-Repository checks
-
-Learning Approach
-
-The repository is built around hands-on practice.
-
-Each lab focuses on solving a practical task and documenting the technologies and techniques used to solve it.
-
-The progression covers:
-
-Linux
-  ↓
-Bash
-  ↓
-Git
-  ↓
-Python
-  ↓
-REST APIs
-  ↓
-Testing
-  ↓
-Docker
-  ↓
-Docker Compose
-  ↓
-NGINX
-  ↓
-Kubernetes
-  ↓
-Terraform
-  ↓
-CI/CD
-
-Goal
-
-The goal of this repository is to demonstrate practical skills required for a Junior DevOps / Cloud Engineer role, with a focus on:
-
-Linux administration
-
-Automation
-
-Python scripting
-
-Bash scripting
-
-REST APIs
-
-Automated testing
-
-Docker
-
-Docker Compose
-
-Kubernetes
-
-Terraform
-
-Infrastructure as Code
-
-CI/CD
-
-GitHub Actions
-
-Networking
-
-Author
-
-Vladimir Poliakov
+**Vladimir Poliakov**
 
 Junior DevOps / Cloud Engineer
+
+`Linux` · `Bash` · `Python` · `Docker` · `Kubernetes` · `Terraform` · `CI/CD`
